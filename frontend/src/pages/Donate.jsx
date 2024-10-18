@@ -4,15 +4,11 @@ import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 import RelatedDoctors from "../components/RelatedDoctors";
 
-const Appointment = () => {
+const Donate = () => {
   const { docId } = useParams();
   const { doctors, currencySymbol } = useContext(AppContext);
-  const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-
   const [docInfo, setDocInfo] = useState(null);
   const [docSlots, setDocSlots] = useState([]);
-  const [slotIndex, setSlotIndex] = useState(0);
-  const [slotTime, setSlotTime] = useState("");
   const fetchDocInfo = async () => {
     const docInfo = doctors.find((doc) => doc._id === docId);
     setDocInfo(docInfo);
@@ -103,20 +99,36 @@ const Appointment = () => {
               <p className="text-sm text-gray-500 max-w-[700px] mt-1">
                 {docInfo.about}
               </p>
-              <p className="text-gray-500 font-medium mt-4">
-                Appointment fee:{" "}
-                <span className="text-gray-600">
-                  {currencySymbol}
-                  {docInfo.fees}
-                </span>
-              </p>
+              <button className="mt-3 bg-primary text-white w-full py-2 rounded-md text-base">
+                Go to Google Maps
+              </button>
             </div>
           </div>
         </div>
+        <form class="flex flex-col justify-center gap-6 md:w-2/4 text-sm text-gray-600 dark:text-white">
+          <label for="place">Place</label>
+          <input type="text" id="place" class="border-b-3" />
 
+          <label for="name">Name</label>
+          <input type="text" id="name" class="border-b-3" />
+
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" class="border-b-3" />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" class="border-b-3" />
+
+          <label for="picture">Upload Picture</label>
+          <input type="file" id="picture" />
+
+          <button className="bg-primary text-white w-full py-2 rounded-md text-base">
+            Submit
+          </button>
+        </form>
+        <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
       </div>
     )
   );
 };
 
-export default Appointment;
+export default Donate;
