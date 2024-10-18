@@ -32,13 +32,10 @@ public class Report {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description; // Description of the report
 
-    @Column(name = "pictureURL", nullable = false, length = 255)
-    private String pictureUrl; // Another picture URL (could be an additional image for the report)
-
     @Column(name = "donationAmount")
     private int donationAmount;
 
-    public static Report createReport(String imgUrl, String location, String name, String phoneNumber, String email, String description, String pictureUrl) {
+    public static Report createReport(String imgUrl, String location, String name, String phoneNumber, String email, String description) {
         Report report = new Report();
         report.imgUrl = imgUrl;
         report.location = location;
@@ -46,7 +43,6 @@ public class Report {
         report.phoneNumber = phoneNumber;
         report.email = email;
         report.description = description;
-        report.pictureUrl = pictureUrl;
         return report;
     }
 }

@@ -27,8 +27,7 @@ public class ReportService {
                 request.name(),
                 request.phoneNumber(),
                 request.email(),
-                request.description(),
-                request.pictureUrl()
+                request.description()
                 );
         reportRepository.save(report);
         return new CreateReportResponse(report.getId());
