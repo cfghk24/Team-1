@@ -45,9 +45,41 @@ import malls from './Malls.png'
 import stores from './Stores.png'
 import transportation from './Transportation.png'
 import case_report from "./case_report.png"
+import oner from './1.png'
+import twor from './2.jpg'
+import threer from './3.jpg'
+import fourr from './4.jpg'
+import fiverr from './5.png'
+import sixep from './6.png'
+import sevenp from './7.jpg'
+import eightp from './8.jpg'
+import nine from './9.jpg'
+import ten from './10.jpg'
+import eleven from './11.jpg'
+import twelve from './12.jpg'
+import thirteen from './13.jpg'
+import fourteen from './14.jpg'
+import fifteen from './15.jpg'
+import sixteen from './16.jpg'
 
 
 export const assets = {
+    nine,
+    ten,
+    eleven,
+    twelve,
+    thirteen,
+    fourteen,
+    fifteen,
+    sixteen,
+    sixep,
+    sevenp,
+    eightp,
+    oner,
+    twor,
+    threer,
+    fourr,
+    fiverr,
     malls,
     stores,
     transportation,
