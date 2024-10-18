@@ -29,8 +29,8 @@ const Navbar2 = (props) => {
           <NavLink onClick={() => setShowMenu(false)} to="/">
             <p className="px-4 py-2 rounded inline-block">HOME</p>
           </NavLink>
-          <NavLink onClick={() => setShowMenu(false)} to="/doctors">
-            <p className="px-4 py-2 rounded inline-block">ALL DOCTORS</p>
+          <NavLink onClick={() => setShowMenu(false)} to="/places">
+            <p className="px-4 py-2 rounded inline-block">TO PLACES</p>
           </NavLink>
           <NavLink onClick={() => setShowMenu(false)} to="/about">
             <p className="px-4 py-2 rounded inline-block">ABOUT</p>
@@ -52,8 +52,8 @@ const Navbar2 = (props) => {
             <li className="py-1 hover:text-gray-300">HOME</li>
             <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
           </NavLink>
-          <NavLink to="/doctors">
-            <li className="py-1 hover:text-gray-300">ALL DOCTORS</li>
+          <NavLink to="/places">
+            <li className="py-1 hover:text-gray-300">PLACES</li>
             <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
           </NavLink>
           <NavLink to="/about">
