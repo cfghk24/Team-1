@@ -29,4 +29,16 @@ public class Report {
     private String pictureUrl; // Another picture URL (could be an additional image for the report)
 
     private int donationAmount;
+
+    public static Report createReport(String imgUrl, String location, String name, String phoneNumber, String email, String description, String pictureUrl) {
+        Report report = new Report();
+        report.imgUrl = imgUrl;
+        report.location = location;
+        report.name = name;
+        report.phoneNumber = phoneNumber;
+        report.email = email;
+        report.description = description;
+        report.pictureUrl = pictureUrl;
+        return report;
+    }
 }
