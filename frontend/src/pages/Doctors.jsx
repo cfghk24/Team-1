@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState,  } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 
@@ -39,79 +39,79 @@ const Doctors = () => {
         >
           <p
             onClick={() =>
-              speciality === "General physician"
+              speciality === "Restarurants"
                 ? navigate("/doctors")
-                : navigate("/doctors/General physician")
+                : navigate("/doctors/Restarurants")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "General physician"
+              speciality === "Restarurants"
                 ? "bg-indigo-100 text-black"
                 : ""
             }`}
           >
-            General physician
+            Restarurants
           </p>
           <p
             onClick={() =>
-              speciality === "Gynecologist"
+              speciality === "Clinics"
                 ? navigate("/doctors")
-                : navigate("/doctors/Gynecologist")
+                : navigate("/doctors/Clinics")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Gynecologist" ? "bg-indigo-100 text-black" : ""
+              speciality === "Clinics" ? "bg-indigo-100 text-black" : ""
             }`}
           >
-            Gynecologist
+            Clinics
           </p>
           <p
             onClick={() =>
-              speciality === "Dermatologist"
+              speciality === "Stores"
                 ? navigate("/doctors")
-                : navigate("/doctors/Dermatologist")
+                : navigate("/doctors/Stores")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Dermatologist" ? "bg-indigo-100 text-black" : ""
+              speciality === "Stores" ? "bg-indigo-100 text-black" : ""
             }`}
           >
-            Dermatologist
+            Stores
           </p>
           <p
             onClick={() =>
-              speciality === "Pediatricians"
+              speciality === "Parks"
                 ? navigate("/doctors")
-                : navigate("/doctors/Pediatricians")
+                : navigate("/doctors/Parks")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Pediatricians" ? "bg-indigo-100 text-black" : ""
+              speciality === "Parks" ? "bg-indigo-100 text-black" : ""
             }`}
           >
-            Pediatricians
+            Parks
           </p>
           <p
             onClick={() =>
-              speciality === "Neurologist"
+              speciality === "Malls"
                 ? navigate("/doctors")
-                : navigate("/doctors/Neurologist")
+                : navigate("/doctors/Malls")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Neurologist" ? "bg-indigo-100 text-black" : ""
+              speciality === "Malls" ? "bg-indigo-100 text-black" : ""
             }`}
           >
-            Neurologist
+            Malls
           </p>
           <p
             onClick={() =>
-              speciality === "Gastroenterologist"
+              speciality === "Transportation"
                 ? navigate("/doctors")
-                : navigate("/doctors/Gastroenterologist")
+                : navigate("/doctors/Transportation")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Gastroenterologist"
+              speciality === "Transportation"
                 ? "bg-indigo-100 text-black"
                 : ""
             }`}
           >
-            Gastroenterologist
+            Transportation
           </p>
         </div>
         <div className="w-full grid grid-cols-auto gap-4 gap-y-6">
