@@ -9,7 +9,6 @@ public record ReportRequest(
     String phoneNumber,
     String email,
     String description,
-    String pictureUrl,
-    int donationAmount
+    String pictureUrl
 ) {
 }
