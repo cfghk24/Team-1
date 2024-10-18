@@ -13,7 +13,7 @@ public record ReportResponse (
         String phoneNumber,
         String email,
         String description,
-        int donationAmount
+        Integer donationAmount
 ){
     public static List<ReportResponse> from(List<Report> reports) {
         return reports.stream()

@@ -6,6 +6,7 @@ import com.jpmorgan.codeforgood.controller.response.ReportResponse;
 import com.jpmorgan.codeforgood.entity.Report;
 import com.jpmorgan.codeforgood.repository.ReportRepository;
 import com.jpmorgan.codeforgood.controller.request.ReportRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class ReportService {
         return ReportResponse.from(reports);
     }
 
+    @Transactional
     public CreateReportResponse createReport(ReportRequest request) {
         Report report = Report.createReport(
                 request.imgUrl(),

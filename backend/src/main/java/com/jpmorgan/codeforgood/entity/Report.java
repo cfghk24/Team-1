@@ -14,26 +14,26 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "imgUrl", nullable = false, length = 100)
+    @Column(name = "img_url", length = 100)
     private String imgUrl;
 
-    @Column(name = "location", nullable = false, length = 255)
+    @Column(name = "location", length = 255)
     private String location;
 
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "name", length = 100)
     private String name; // Name of the reporter
 
-    @Column(name = "phoneNumber", nullable = false, length = 100)
+    @Column(name = "phone_number", length = 100)
     private String phoneNumber; // Phone number of the reporter
 
-    @Column(name = "email", nullable = false, length = 100)
+    @Column(name = "email", length = 100)
     private String email; // Email of the reporter
 
     @Column(name = "description", columnDefinition = "TEXT")
     private String description; // Description of the report
 
-    @Column(name = "donationAmount")
-    private int donationAmount;
+    @Column(name = "donation_amount")
+    private Integer donationAmount;
 
     public static Report createReport(String imgUrl, String location, String name, String phoneNumber, String email, String description) {
         Report report = new Report();
