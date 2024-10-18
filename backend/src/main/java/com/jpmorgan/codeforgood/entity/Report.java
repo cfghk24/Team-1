@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String imgUrl; // Image URL
 
@@ -26,7 +26,7 @@ public class Report {
 
     private String description; // Description of the report
 
-    private String pictureURL; // Another picture URL (could be an additional image for the report)
+    private String pictureUrl; // Another picture URL (could be an additional image for the report)
 
     private int donationAmount;
 }
