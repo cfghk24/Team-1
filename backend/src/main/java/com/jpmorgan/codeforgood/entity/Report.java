@@ -35,6 +35,9 @@ public class Report {
     @Column(name = "donation_amount")
     private Integer donationAmount;
 
+    @Column(name = "donation_max")
+    private Integer donationMax;
+
     public static Report createReport(String imgUrl, String location, String name, String phoneNumber, String email, String description) {
         Report report = new Report();
         report.imgUrl = imgUrl;
