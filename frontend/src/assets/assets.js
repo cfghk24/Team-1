@@ -40,7 +40,7 @@ import abuse from './abuse.png'
 import logo_s from './logo_s.png'
 import park from './Park.png'
 import clinic from './Clinic.png'
-import restaraunt from './Restaurant.png'
+import restaurant from './Restaurant.png'
 import malls from './Malls.png'
 import stores from './Stores.png'
 import transportation from './Transportation.png'
@@ -86,7 +86,7 @@ export const assets = {
     case_report,
     park,
     clinic,
-    restaraunt,
+    restaurant,
     appointment_img,
     header_img,
     abuse,
@@ -110,8 +110,8 @@ export const assets = {
 
 export const specialityData = [
     {
-        speciality: 'Restaraunts',
-        image: restaraunt
+        speciality: 'Restaurants',
+        image: restaurant
     },
 
     {

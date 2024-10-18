@@ -6,9 +6,9 @@ const Contact = () => {
     <div>
       <div className="text-center text-2xl pt-10 text-gray-500 dark:text-white">
         <p>
-          CONTACT{" "}
+          VOLUNTEER WITH {" "}
           <span className="text-gray-700 dark:text-white font-semibold">
-            US
+            SPCA
           </span>
         </p>
       </div>
@@ -19,20 +19,20 @@ const Contact = () => {
           alt=""
         />
         <div className="flex flex-col justify-center items-start gap-6 text-gray-500 dark:text-white">
-          <p className="font-semibold text-lg">OUR OFFICE</p>
+          <p className="font-semibold text-lg">Becoming One of Us</p>
           <p>
-            54709 Willms Station <br />
-            Suite 350, Washington, USA
+            Together we protect animal <br />
+            health and welfare.
           </p>
           <p>
-            Tel: (415) 555‑0132 <br />
-            Email: greatstackdev@gmail.com
+            Tel: (+852) 2802 0501<br />
+            HotLine: (+852) 2711 1000
           </p>
-          <p className="font-semibold text-lg">Careers at PRESCRIPTO</p>
-          <p>Learn more about our teams and job openings.</p>
-          <button className="border border-black dark:border-white px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500">
-            Explore Jobs
+          <p className="font-semibold text-lg">Learn more about SPCA membership</p>
+          <a href="https://www.spca.org.hk/get-involved/become-a-member/"><button className="border border-black dark:border-white px-8 py-4 text-sm hover:bg-black hover:text-white transition-all duration-500">
+            Register with us
           </button>
+          </a>
         </div>
       </div>
     </div>

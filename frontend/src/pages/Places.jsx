@@ -3,44 +3,46 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets"; // Import the assets
 
+const NavItem = ({ label, path, isActive }) => {
+  const navigate = useNavigate();
+  return (
+    <p
+      onClick={() => navigate(path)}
+      className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
+        isActive ? "bg-indigo-100 text-black" : ""
+      }`}
+    >
+      {label}
+    </p>
+  );
+};
+
 const Places = () => {
   const { speciality } = useParams();
   const { doctors } = useContext(AppContext);
-  const [filterDoc, setFilterDoc] = useState([]);
   const [places, setPlaces] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const navigate = useNavigate();
 
+  //Future improvements: change the API URL to the const and run it locally, so you can test the app without the need of the ngrok server
+  //Don't have time sorry:(
+  const categoryUrls = {
+    MALLS: "https://4658-165-225-230-205.ngrok-free.app/places?category=MALL",
+    PARKS: "https://4658-165-225-230-205.ngrok-free.app/places?category=PARK",
+    STORES: "https://4658-165-225-230-205.ngrok-free.app/places?category=STORE",
+    CLINICS:
+      "https://4658-165-225-230-205.ngrok-free.app/places?category=CLINIC",
+    TRANSPORTATION:
+      "https://4658-165-225-230-205.ngrok-free.app/places?category=TRANSPORTATION",
+    RESTAURANTS:
+      "https://4658-165-225-230-205.ngrok-free.app/places?category=RESTAURANT",
+  };
+
   const fetchPlaces = (category) => {
-    let url = "";
-    switch (category.toUpperCase()) {
-      case "MALLS":
-        url =
-          "https://4658-165-225-230-205.ngrok-free.app/places?category=MALL";
-        break;
-      case "PARKS":
-        url =
-          "https://4658-165-225-230-205.ngrok-free.app/places?category=PARK";
-        break;
-      case "STORES":
-        url =
-          "https://4658-165-225-230-205.ngrok-free.app/places?category=STORE";
-        break;
-      case "CLINICS":
-        url =
-          "https://4658-165-225-230-205.ngrok-free.app/places?category=CLINIC";
-        break;
-      case "TRANSPORTATION":
-        url =
-          "https://4658-165-225-230-205.ngrok-free.app/places?category=TRANSPORTATION";
-        break;
-      case "RESTAURANTS":
-        url =
-          "https://4658-165-225-230-205.ngrok-free.app/places?category=RESTAURANT";
-        break;
-      default:
-        console.error("Unknown category:", category);
-        return;
+    const url = categoryUrls[category.toUpperCase()];
+    if (!url) {
+      console.error("Unknown category:", category);
+      return;
     }
 
     fetch(url, {
@@ -54,23 +56,21 @@ const Places = () => {
       .catch((error) => console.error("Error fetching data:", error));
   };
 
-  const applyFilter = () => {
-    if (speciality) {
-      setFilterDoc(doctors.filter((doc) => doc.speciality === speciality));
+  useEffect(() => {
+    if (!speciality) {
+      navigate("/places/Restaurants");
     } else {
-      setFilterDoc(doctors);
-    }
-  };
-
-  useEffect(() => {
-    applyFilter();
-  }, [doctors, speciality]);
-
-  useEffect(() => {
-    if (speciality) {
       fetchPlaces(speciality);
     }
-  }, [speciality]);
+  }, [speciality, navigate]);
+
+  const commonImages = [
+    assets.sixep,
+    assets.sevenp,
+    assets.eightp,
+    assets.ninep,
+    assets.tenp,
+  ];
 
   const categoryImages = {
     RESTAURANTS: [
@@ -80,41 +80,11 @@ const Places = () => {
       assets.fourr,
       assets.fiverr,
     ],
-    MALLS: [
-      assets.sixep,
-      assets.sevenp,
-      assets.eightp,
-      assets.ninep,
-      assets.tenp,
-    ],
-    PARKS: [
-      assets.sixep,
-      assets.sevenp,
-      assets.eightp,
-      assets.ninep,
-      assets.tenp,
-    ],
-    STORES: [
-      assets.sixep,
-      assets.sevenp,
-      assets.eightp,
-      assets.ninep,
-      assets.tenp,
-    ],
-    CLINICS: [
-      assets.sixep,
-      assets.sevenp,
-      assets.eightp,
-      assets.ninep,
-      assets.tenp,
-    ],
-    TRANSPORTATION: [
-      assets.sixep,
-      assets.sevenp,
-      assets.eightp,
-      assets.ninep,
-      assets.tenp,
-    ],
+    MALLS: commonImages,
+    PARKS: commonImages,
+    STORES: commonImages,
+    CLINICS: commonImages,
+    TRANSPORTATION: commonImages,
   };
 
   return (
@@ -136,89 +106,48 @@ const Places = () => {
             showFilter ? "flex" : "hidden sm:flex"
           }`}
         >
-          <p
-            onClick={() =>
-              speciality === "Restaurants"
-                ? navigate("/places")
-                : navigate("/places/Restaurants")
-            }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Restaurants" ? "bg-indigo-100 text-black" : ""
-            }`}
-          >
-            Restaurants
-          </p>
-          <p
-            onClick={() =>
-              speciality === "Clinics"
-                ? navigate("/places")
-                : navigate("/places/Clinics")
-            }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Clinics" ? "bg-indigo-100 text-black" : ""
-            }`}
-          >
-            Clinics
-          </p>
-          <p
-            onClick={() =>
-              speciality === "Stores"
-                ? navigate("/places")
-                : navigate("/places/Stores")
-            }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Stores" ? "bg-indigo-100 text-black" : ""
-            }`}
-          >
-            Stores
-          </p>
-          <p
-            onClick={() =>
-              speciality === "Parks"
-                ? navigate("/places")
-                : navigate("/places/Parks")
-            }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Parks" ? "bg-indigo-100 text-black" : ""
-            }`}
-          >
-            Parks
-          </p>
-          <p
-            onClick={() =>
-              speciality === "Malls"
-                ? navigate("/places")
-                : navigate("/places/Malls")
-            }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Malls" ? "bg-indigo-100 text-black" : ""
-            }`}
-          >
-            Malls
-          </p>
-          <p
-            onClick={() =>
-              speciality === "Transportation"
-                ? navigate("/places")
-                : navigate("/places/Transportation")
-            }
-            className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
-              speciality === "Transportation" ? "bg-indigo-100 text-black" : ""
-            }`}
-          >
-            Transportation
-          </p>
+          <NavItem
+            label="Restaurants"
+            path="/places/Restaurants"
+            isActive={speciality === "Restaurants"}
+          />
+          <NavItem
+            label="Clinics"
+            path="/places/Clinics"
+            isActive={speciality === "Clinics"}
+          />
+          <NavItem
+            label="Stores"
+            path="/places/Stores"
+            isActive={speciality === "Stores"}
+          />
+          <NavItem
+            label="Parks"
+            path="/places/Parks"
+            isActive={speciality === "Parks"}
+          />
+          <NavItem
+            label="Malls"
+            path="/places/Malls"
+            isActive={speciality === "Malls"}
+          />
+          <NavItem
+            label="Transportation"
+            path="/places/Transportation"
+            isActive={speciality === "Transportation"}
+          />
         </div>
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-6">
-          {places.length > 0
-            ? places.map((place, index) => (
-                <div
-                  onClick={() => window.open(place.url, "_blank")}
-                  className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
-                  key={index}
-                >
+          {places.length > 0 &&
+            places.map((place, index) => (
+              <div
+                onClick={() => window.open(place.url, "_blank")}
+                className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+                key={index}
+              >
+                <div className="w-full h-48 relative">
                   <img
-                    className="bg-blue-50 w-full h-48 object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                     src={
                       categoryImages[speciality.toUpperCase()]
                         ? categoryImages[speciality.toUpperCase()][
@@ -229,44 +158,20 @@ const Places = () => {
                     }
                     alt={place.name}
                   />
-                  <div className="p-4">
-                    <p className="text-gray-900 dark:text-white text-lg font-medium">
-                      {place.name}
-                    </p>
-                    <p className="text-gray-600 dark:text-white text-sm">
-                      {place.description}
-                    </p>
-                    <p className="text-gray-600 dark:text-white text-sm">
-                      Rating: {place.rating}
-                    </p>
-                  </div>
                 </div>
-              ))
-            : filterDoc.map((item, index) => (
-                <div
-                  onClick={() => navigate(`/appointment/${item._id}`)}
-                  className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
-                  key={index}
-                >
-                  <img
-                    className="bg-blue-50 w-full h-48 object-cover"
-                    src={item.image}
-                    alt=""
-                  />
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 text-sm text-center text-green-500">
-                      <p className="w-2 h-2 bg-green-500 rounded-full"></p>
-                      <p>Available</p>
-                    </div>
-                    <p className="text-gray-900 dark:text-white text-lg font-medium">
-                      {item.name}
-                    </p>
-                    <p className="text-gray-600 dark:text-white text-sm">
-                      {item.speciality}
-                    </p>
-                  </div>
+                <div className="p-4">
+                  <p className="text-gray-900 dark:text-white text-lg font-medium">
+                    {place.name}
+                  </p>
+                  <p className="text-gray-600 dark:text-white text-sm">
+                    {place.description}
+                  </p>
+                  <p className="text-gray-600 dark:text-white text-sm">
+                    Rating: {place.rating}
+                  </p>
                 </div>
-              ))}
+              </div>
+            ))}
         </div>
       </div>
     </div>

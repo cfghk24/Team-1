@@ -43,16 +43,21 @@ const Cases = () => {
                   <div className="bg-gray-200 rounded-full h-2">
                     <div
                       className="bg-blue-500 h-2 rounded-full"
-                      style={{ width: "70%" }}
+                      style={{
+                        width: `${
+                          (item.donationAmount / item.donationMax) * 100
+                        }%`,
+                      }}
                     ></div>
                   </div>
                 </div>
-                <p className="mt-2 text-gray-600 dark:text-white text-sm">
-                  {item.speciality}
-                </p>
+                <div className="flex justify-between">
+                  <p>0</p>
+                  <p>{item.donationMax}</p>
+                </div>
                 <button
                   className="mt-2 bg-primary text-white w-full py-2 rounded-md text-base"
-                  onClick={() => {navigate("../donate/" + item.id);}}
+                  onClick={() => navigate("../report/" + item.id)}
                 >
                   Donate
                 </button>
