@@ -44,13 +44,14 @@ import restaraunt from './Restaurant.png'
 import malls from './Malls.png'
 import stores from './Stores.png'
 import transportation from './Transportation.png'
-
+import case_report from "./case_report.png"
 
 
 export const assets = {
     malls,
     stores,
     transportation,
+    case_report,
     park,
     clinic,
     restaraunt,

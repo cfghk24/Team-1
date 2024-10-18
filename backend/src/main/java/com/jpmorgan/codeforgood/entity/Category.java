@@ -4,5 +4,8 @@ public enum Category {
     ALL,
     RESTAURANT,
     MALL,
-    PARK
+    PARK,
+    STORE,
+    CLINIC,
+    TRANSPORTATION
 }

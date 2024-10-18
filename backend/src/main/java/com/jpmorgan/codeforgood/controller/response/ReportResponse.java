@@ -13,8 +13,7 @@ public record ReportResponse (
         String phoneNumber,
         String email,
         String description,
-        String pictureURL,
-        int donationAmount
+        Integer donationAmount
 ){
     public static List<ReportResponse> from(List<Report> reports) {
         return reports.stream()
@@ -26,7 +25,6 @@ public record ReportResponse (
                         report.getPhoneNumber(),
                         report.getEmail(),
                         report.getDescription(),
-                        report.getPictureUrl(),
                         report.getDonationAmount()
                 ))
                 .toList();
