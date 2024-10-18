@@ -35,8 +35,9 @@ import Gastroenterologist from './Gastroenterologist.svg'
 import Pet_Friendly_Restaurant from './Restaurant.png'
 import Clinic from './Clinic.png'
 import Park from './Park.png'
-import Neurologist from './Neurologist.svg'
-import Pediatricians from './Pediatricians.svg'
+import Stores from './Stores.png'
+import Malls from './Malls.png'
+import Transportation from'./Transportation.png'
 
 
 export const assets = {
@@ -71,6 +72,18 @@ export const specialityData = [
     {
         speciality: 'Clinic',
         image: Clinic
+    },
+    {
+      speciality: 'Malls',
+      image: Malls
+    },
+    {
+      speciality: 'Stores',
+      image: Stores
+    },
+    {
+      speciality: 'Transportation',
+      image: Transportation
     },
 ]
 
