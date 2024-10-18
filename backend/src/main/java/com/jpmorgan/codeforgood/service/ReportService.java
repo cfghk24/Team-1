@@ -34,4 +34,9 @@ public class ReportService {
         reportRepository.save(report);
         return new CreateReportResponse(report.getId());
     }
+
+    public ReportResponse getReportById(Long caseId) {
+        Report report = reportRepository.findById(caseId).orElseThrow(() -> new RuntimeException("Case not found"));
+        return ReportResponse.from(report);
+    }
 }

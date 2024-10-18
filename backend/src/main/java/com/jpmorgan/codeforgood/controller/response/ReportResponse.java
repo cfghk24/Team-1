@@ -29,4 +29,17 @@ public record ReportResponse (
                 ))
                 .toList();
     }
+
+    public static ReportResponse from(Report report) {
+        return new ReportResponse(
+                report.getId(),
+                report.getImgUrl(),
+                report.getLocation(),
+                report.getName(),
+                report.getPhoneNumber(),
+                report.getEmail(),
+                report.getDescription(),
+                report.getDonationAmount()
+        );
+    }
 }
