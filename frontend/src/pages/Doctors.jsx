@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState,  } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
-import Rating from '@mui/material/Rating';
 
 const Doctors = () => {
   const { speciality } = useParams();
@@ -127,7 +126,6 @@ const Doctors = () => {
                 <div className="flex items-center gap-2 text-sm text-center text-green-500">
                   <p className="w-2 h-2 bg-green-500 rounded-full"></p>
                   <p>Available</p>
-                  <Rating name="read-only" value={value} readOnly />
                 </div>
                 <p className="text-gray-900 dark:text-white text-lg font-medium">
                   {item.name}
