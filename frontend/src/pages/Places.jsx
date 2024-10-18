@@ -6,7 +6,6 @@ import { assets } from "../assets/assets"; // Import the assets
 const Places = () => {
   const { speciality } = useParams();
   const { doctors } = useContext(AppContext);
-  const [filterDoc, setFilterDoc] = useState([]);
   const [places, setPlaces] = useState([]);
   const [showFilter, setShowFilter] = useState(false);
   const navigate = useNavigate();
@@ -53,18 +52,6 @@ const Places = () => {
       .then((data) => setPlaces(data))
       .catch((error) => console.error("Error fetching data:", error));
   };
-
-  const applyFilter = () => {
-    if (speciality) {
-      setFilterDoc(doctors.filter((doc) => doc.speciality === speciality));
-    } else {
-      setFilterDoc(doctors);
-    }
-  };
-
-  useEffect(() => {
-    applyFilter();
-  }, [doctors, speciality]);
 
   useEffect(() => {
     if (speciality) {
@@ -210,63 +197,38 @@ const Places = () => {
           </p>
         </div>
         <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-6">
-          {places.length > 0
-            ? places.map((place, index) => (
-                <div
-                  onClick={() => window.open(place.url, "_blank")}
-                  className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
-                  key={index}
-                >
-                  <img
-                    className="bg-blue-50 w-full h-48 object-cover"
-                    src={
-                      categoryImages[speciality.toUpperCase()]
-                        ? categoryImages[speciality.toUpperCase()][
-                            index %
-                              categoryImages[speciality.toUpperCase()].length
-                          ]
-                        : assets.defaultImage // Fallback image if category is not found
-                    }
-                    alt={place.name}
-                  />
-                  <div className="p-4">
-                    <p className="text-gray-900 dark:text-white text-lg font-medium">
-                      {place.name}
-                    </p>
-                    <p className="text-gray-600 dark:text-white text-sm">
-                      {place.description}
-                    </p>
-                    <p className="text-gray-600 dark:text-white text-sm">
-                      Rating: {place.rating}
-                    </p>
-                  </div>
+          {places.length > 0 &&
+            places.map((place, index) => (
+              <div
+                onClick={() => window.open(place.url, "_blank")}
+                className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
+                key={index}
+              >
+                <img
+                  className="bg-blue-50 w-full h-48 object-cover"
+                  src={
+                    categoryImages[speciality.toUpperCase()]
+                      ? categoryImages[speciality.toUpperCase()][
+                          index %
+                            categoryImages[speciality.toUpperCase()].length
+                        ]
+                      : assets.defaultImage // Fallback image if category is not found
+                  }
+                  alt={place.name}
+                />
+                <div className="p-4">
+                  <p className="text-gray-900 dark:text-white text-lg font-medium">
+                    {place.name}
+                  </p>
+                  <p className="text-gray-600 dark:text-white text-sm">
+                    {place.description}
+                  </p>
+                  <p className="text-gray-600 dark:text-white text-sm">
+                    Rating: {place.rating}
+                  </p>
                 </div>
-              ))
-            : filterDoc.map((item, index) => (
-                <div
-                  onClick={() => navigate(`/appointment/${item._id}`)}
-                  className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
-                  key={index}
-                >
-                  <img
-                    className="bg-blue-50 w-full h-48 object-cover"
-                    src={item.image}
-                    alt=""
-                  />
-                  <div className="p-4">
-                    <div className="flex items-center gap-2 text-sm text-center text-green-500">
-                      <p className="w-2 h-2 bg-green-500 rounded-full"></p>
-                      <p>Available</p>
-                    </div>
-                    <p className="text-gray-900 dark:text-white text-lg font-medium">
-                      {item.name}
-                    </p>
-                    <p className="text-gray-600 dark:text-white text-sm">
-                      {item.speciality}
-                    </p>
-                  </div>
-                </div>
-              ))}
+              </div>
+            ))}
         </div>
       </div>
     </div>
