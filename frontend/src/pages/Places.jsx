@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+import { assets } from "../assets/assets"; // Import the assets
 
 const Places = () => {
   const { speciality } = useParams();
@@ -71,10 +72,55 @@ const Places = () => {
     }
   }, [speciality]);
 
+  const categoryImages = {
+    RESTAURANTS: [
+      assets.oner,
+      assets.twor,
+      assets.threer,
+      assets.fourr,
+      assets.fiverr,
+    ],
+    MALLS: [
+      assets.sixep,
+      assets.sevenp,
+      assets.eightp,
+      assets.ninep,
+      assets.tenp,
+    ],
+    PARKS: [
+      assets.sixep,
+      assets.sevenp,
+      assets.eightp,
+      assets.ninep,
+      assets.tenp,
+    ],
+    STORES: [
+      assets.sixep,
+      assets.sevenp,
+      assets.eightp,
+      assets.ninep,
+      assets.tenp,
+    ],
+    CLINICS: [
+      assets.sixep,
+      assets.sevenp,
+      assets.eightp,
+      assets.ninep,
+      assets.tenp,
+    ],
+    TRANSPORTATION: [
+      assets.sixep,
+      assets.sevenp,
+      assets.eightp,
+      assets.ninep,
+      assets.tenp,
+    ],
+  };
+
   return (
     <div>
       <p className="text-gray-600 dark:text-white">
-        Browse through the doctors specialist.
+        Browse through the pet-friendly amenities in your area.
       </p>
       <div className="flex flex-col sm:flex-row items-start gap-5 mt-5">
         <button
@@ -163,7 +209,7 @@ const Places = () => {
             Transportation
           </p>
         </div>
-        <div className="w-full grid grid-cols-auto gap-4 gap-y-6">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 gap-y-6">
           {places.length > 0
             ? places.map((place, index) => (
                 <div
@@ -172,8 +218,15 @@ const Places = () => {
                   key={index}
                 >
                   <img
-                    className="bg-blue-50"
-                    src={place.imgUrl}
+                    className="bg-blue-50 w-full h-48 object-cover"
+                    src={
+                      categoryImages[speciality.toUpperCase()]
+                        ? categoryImages[speciality.toUpperCase()][
+                            index %
+                              categoryImages[speciality.toUpperCase()].length
+                          ]
+                        : assets.defaultImage // Fallback image if category is not found
+                    }
                     alt={place.name}
                   />
                   <div className="p-4">
@@ -195,7 +248,11 @@ const Places = () => {
                   className="border border-blue-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
                   key={index}
                 >
-                  <img className="bg-blue-50" src={item.image} alt="" />
+                  <img
+                    className="bg-blue-50 w-full h-48 object-cover"
+                    src={item.image}
+                    alt=""
+                  />
                   <div className="p-4">
                     <div className="flex items-center gap-2 text-sm text-center text-green-500">
                       <p className="w-2 h-2 bg-green-500 rounded-full"></p>
