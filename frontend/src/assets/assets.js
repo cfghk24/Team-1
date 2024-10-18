@@ -32,17 +32,31 @@ import doc14 from './doc14.png'
 import doc15 from './doc15.png'
 import Dermatologist from './Dermatologist.svg'
 import Gastroenterologist from './Gastroenterologist.svg'
-import Pet_Friendly_Restaurant from './Restaurant.png'
-import Clinic from './Clinic.png'
-import Park from './Park.png'
-import Stores from './Stores.png'
-import Malls from './Malls.png'
-import Transportation from'./Transportation.png'
+import General_physician from './General_physician.svg'
+import Gynecologist from './Gynecologist.svg'
+import Neurologist from './Neurologist.svg'
+import Pediatricians from './Pediatricians.svg'
+import abuse from './abuse.png'
+import logo_s from './logo_s.png'
+import park from './Park.png'
+import clinic from './Clinic.png'
+import restaraunt from './Restaurant.png'
+import malls from './Malls.png'
+import stores from './Stores.png'
+import transportation from './Transportation.png'
+
 
 
 export const assets = {
+    malls,
+    stores,
+    transportation,
+    park,
+    clinic,
+    restaraunt,
     appointment_img,
     header_img,
+    abuse,
     group_profiles,
     logo,
     chats_icon,
@@ -57,34 +71,37 @@ export const assets = {
     dropdown_icon,
     upload_icon,
     stripe_logo,
-    razorpay_logo
+    razorpay_logo,
+    logo_s
 }
 
 export const specialityData = [
     {
-        speciality: 'Pet Friendly Restaurant',
-        image: Pet_Friendly_Restaurant
+        speciality: 'Restaraunts',
+        image: restaraunt
+    },
+
+    {
+        speciality: 'Malls',
+        image: malls
     },
     {
-        speciality: 'Park',
-        image: Park
+        speciality: 'Clinics',
+        image: clinic
     },
     {
-        speciality: 'Clinic',
-        image: Clinic
+        speciality: 'Stores',
+        image: stores
     },
     {
-      speciality: 'Malls',
-      image: Malls
+        speciality: 'Parks',
+        image: park
     },
     {
-      speciality: 'Stores',
-      image: Stores
-    },
-    {
-      speciality: 'Transportation',
-      image: Transportation
-    },
+        speciality: 'Transportation',
+        image: transportation
+    }
+    
 ]
 
 export const doctors = [
