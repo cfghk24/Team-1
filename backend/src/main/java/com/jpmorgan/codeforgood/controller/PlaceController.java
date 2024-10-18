@@ -18,7 +18,6 @@ public class PlaceController {
 
     private final PlaceService placeService;
 
-
     @GetMapping("")
     public ResponseEntity<List<PlaceResponse>> getAllPlaces(@RequestParam Category category) {
         return ResponseEntity.ok(placeService.getAllPlaces(category));

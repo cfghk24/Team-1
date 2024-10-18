@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/places")
+@RequestMapping("/reports")
 public class ReportController {
     private final ReportService reportService;
+
 }

@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @RequiredArgsConstructor
@@ -16,7 +17,11 @@ public class PlaceService {
     private final PlaceRepository placeRepository;
 
     public List<PlaceResponse> getAllPlaces(Category category) {
-        List<Place> all = placeRepository.findAllByCategory(category);
-        return PlaceResponse.from(all);
+        if (category.equals(Category.ALL)) {
+            List<Place> all = placeRepository.findAll();
+            return PlaceResponse.from(all);
+        }
+        List<Place> placesByCategory = placeRepository.findAllByCategory(category);
+        return PlaceResponse.from(placesByCategory);
     }
 }
