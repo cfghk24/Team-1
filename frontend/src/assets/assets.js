@@ -32,8 +32,9 @@ import doc14 from './doc14.png'
 import doc15 from './doc15.png'
 import Dermatologist from './Dermatologist.svg'
 import Gastroenterologist from './Gastroenterologist.svg'
-import General_physician from './General_physician.svg'
-import Gynecologist from './Gynecologist.svg'
+import Pet_Friendly_Restaurant from './Restaurant.png'
+import Clinic from './Clinic.png'
+import Park from './Park.png'
 import Neurologist from './Neurologist.svg'
 import Pediatricians from './Pediatricians.svg'
 
@@ -60,28 +61,16 @@ export const assets = {
 
 export const specialityData = [
     {
-        speciality: 'General physician',
-        image: General_physician
+        speciality: 'Pet Friendly Restaurant',
+        image: Pet_Friendly_Restaurant
     },
     {
-        speciality: 'Gynecologist',
-        image: Gynecologist
+        speciality: 'Park',
+        image: Park
     },
     {
-        speciality: 'Dermatologist',
-        image: Dermatologist
-    },
-    {
-        speciality: 'Pediatricians',
-        image: Pediatricians
-    },
-    {
-        speciality: 'Neurologist',
-        image: Neurologist
-    },
-    {
-        speciality: 'Gastroenterologist',
-        image: Gastroenterologist
+        speciality: 'Clinic',
+        image: Clinic
     },
 ]
 
