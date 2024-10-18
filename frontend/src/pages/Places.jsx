@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState,  } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 
-const Doctors = () => {
+const Places = () => {
   const { speciality } = useParams();
   const { doctors } = useContext(AppContext);
   const [filterDoc, setFilterDoc] = useState([]);
@@ -40,8 +40,8 @@ const Doctors = () => {
           <p
             onClick={() =>
               speciality === "Restarurants"
-                ? navigate("/doctors")
-                : navigate("/doctors/Restarurants")
+                ? navigate("/places")
+                : navigate("/places/Restarurants")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
               speciality === "Restarurants"
@@ -54,8 +54,8 @@ const Doctors = () => {
           <p
             onClick={() =>
               speciality === "Clinics"
-                ? navigate("/doctors")
-                : navigate("/doctors/Clinics")
+                ? navigate("/places")
+                : navigate("/places/Clinics")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
               speciality === "Clinics" ? "bg-indigo-100 text-black" : ""
@@ -66,8 +66,8 @@ const Doctors = () => {
           <p
             onClick={() =>
               speciality === "Stores"
-                ? navigate("/doctors")
-                : navigate("/doctors/Stores")
+                ? navigate("/places")
+                : navigate("/places/Stores")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
               speciality === "Stores" ? "bg-indigo-100 text-black" : ""
@@ -78,8 +78,8 @@ const Doctors = () => {
           <p
             onClick={() =>
               speciality === "Parks"
-                ? navigate("/doctors")
-                : navigate("/doctors/Parks")
+                ? navigate("/places")
+                : navigate("/places/Parks")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
               speciality === "Parks" ? "bg-indigo-100 text-black" : ""
@@ -90,8 +90,8 @@ const Doctors = () => {
           <p
             onClick={() =>
               speciality === "Malls"
-                ? navigate("/doctors")
-                : navigate("/doctors/Malls")
+                ? navigate("/places")
+                : navigate("/places/Malls")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
               speciality === "Malls" ? "bg-indigo-100 text-black" : ""
@@ -102,8 +102,8 @@ const Doctors = () => {
           <p
             onClick={() =>
               speciality === "Transportation"
-                ? navigate("/doctors")
-                : navigate("/doctors/Transportation")
+                ? navigate("/places")
+                : navigate("/places/Transportation")
             }
             className={`w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer ${
               speciality === "Transportation"
@@ -142,4 +142,4 @@ const Doctors = () => {
   );
 };
 
-export default Doctors;
+export default Places;

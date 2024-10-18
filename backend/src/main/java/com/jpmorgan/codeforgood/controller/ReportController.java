@@ -18,11 +18,11 @@ import java.util.List;
 public class ReportController {
     private final ReportService reportService;
 
-    @GetMapping("get")
+    @GetMapping("")
     public ResponseEntity<List<ReportResponse>> getAllReports() {
         return ResponseEntity.ok(reportService.getAllReports());
     }
-    @PostMapping("insert")
+    @PostMapping("")
     public ResponseEntity<CreateReportResponse> createReport(@RequestBody ReportRequest request) {
         CreateReportResponse response = reportService.createReport(request);
         return ResponseEntity.ok(response);
