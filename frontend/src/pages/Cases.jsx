@@ -57,7 +57,7 @@ const Cases = () => {
                 </div>
                 <button
                   className="mt-2 bg-primary text-white w-full py-2 rounded-md text-base"
-                  onClick={() => navigate("../donate/" + item.id)}
+                  onClick={() => navigate("../report/" + item.id)}
                 >
                   Donate
                 </button>
