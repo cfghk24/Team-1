@@ -5,12 +5,30 @@ import { assets } from "../assets/assets";
 import RelatedDoctors from "../components/RelatedDoctors";
 
 const Donate = () => {
-  const { docId } = useParams();
+  const { caseId } = useParams();
   const { doctors, currencySymbol } = useContext(AppContext);
+  const [cases, setCases] = useState([]);
+
+  const fetchCases = (category) => {
+    let url = "https://4658-165-225-230-205.ngrok-free.app/reports";
+    fetch(url, {
+      method: "GET",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "true",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => setCases(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  };
+
+  useEffect(() => {
+    fetchCases();
+  }, []);
   const [docInfo, setDocInfo] = useState(null);
   const [docSlots, setDocSlots] = useState([]);
   const fetchDocInfo = async () => {
-    const docInfo = doctors.find((doc) => doc._id === docId);
+    const docInfo = cases.find((doc) => doc._id === caseId);
     setDocInfo(docInfo);
     console.log(docInfo);
   };
@@ -58,7 +76,7 @@ const Donate = () => {
 
   useEffect(() => {
     fetchDocInfo();
-  }, [doctors, docId]);
+  }, [doctors, caseId]);
 
   useEffect(() => {
     getAvailableSlots();
@@ -125,7 +143,7 @@ const Donate = () => {
             Submit
           </button>
         </form>
-        <RelatedDoctors docId={docId} speciality={docInfo.speciality} />
+        <RelatedDoctors caseId={caseId} speciality={docInfo.speciality} />
       </div>
     )
   );

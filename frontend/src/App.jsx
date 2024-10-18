@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Navbar2 from "./components/Navbar2";
 import Chatbot from "./components/Chatbot";
 import Cases from "./pages/Cases";
+import Donate from "./pages/Donate";
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleDarkMode = () => {
@@ -28,7 +29,7 @@ const App = () => {
           <Route path="/places/:speciality" element={<Places />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cases" element={<Cases/>}/>
-          {/* <Route path="/donate/:caseId" element={<Donate />} /> */}
+          <Route path="/donate/:caseId" element={<Donate />} />
           <Route path="/report" element={<Report />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/my-profile" element={<MyProfile />} />
