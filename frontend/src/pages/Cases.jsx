@@ -52,7 +52,7 @@ const Cases = () => {
                 </p>
                 <button
                   className="mt-2 bg-primary text-white w-full py-2 rounded-md text-base"
-                  onClick={() => navigate("../donate/" + item.id)}
+                  onClick={() => {navigate("../donate/" + item.id);}}
                 >
                   Donate
                 </button>
