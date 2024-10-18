@@ -1,6 +1,7 @@
 package com.jpmorgan.codeforgood.controller.request;
 
 import lombok.Getter;
+import org.springframework.web.multipart.MultipartFile;
 
 public record ReportRequest(
     String imgUrl,
@@ -8,7 +9,6 @@ public record ReportRequest(
     String name,
     String phoneNumber,
     String email,
-    String description,
-    String pictureUrl
+    String description
 ) {
 }
