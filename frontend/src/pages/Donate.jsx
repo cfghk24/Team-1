@@ -4,17 +4,31 @@ import { AppContext } from "../context/AppContext";
 import { assets } from "../assets/assets";
 import RelatedDoctors from "../components/RelatedDoctors";
 
-const Appointment = () => {
-  const { docId } = useParams();
+const Donate = () => {
+  const { caseId } = useParams();
   const { doctors, currencySymbol } = useContext(AppContext);
-  const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  const [cases, setCases] = useState([]);
 
+  const fetchCases = (category) => {
+    let url = "https://4658-165-225-230-205.ngrok-free.app/reports";
+    fetch(url, {
+      method: "GET",
+      headers: new Headers({
+        "ngrok-skip-browser-warning": "true",
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => setCases(data))
+      .catch((error) => console.error("Error fetching data:", error));
+  };
+
+  useEffect(() => {
+    fetchCases();
+  }, []);
   const [docInfo, setDocInfo] = useState(null);
   const [docSlots, setDocSlots] = useState([]);
-  const [slotIndex, setSlotIndex] = useState(0);
-  const [slotTime, setSlotTime] = useState("");
   const fetchDocInfo = async () => {
-    const docInfo = doctors.find((doc) => doc._id === docId);
+    const docInfo = cases.find((doc) => doc._id === caseId);
     setDocInfo(docInfo);
     console.log(docInfo);
   };
@@ -62,7 +76,7 @@ const Appointment = () => {
 
   useEffect(() => {
     fetchDocInfo();
-  }, [doctors, docId]);
+  }, [doctors, caseId]);
 
   useEffect(() => {
     getAvailableSlots();
@@ -103,20 +117,36 @@ const Appointment = () => {
               <p className="text-sm text-gray-500 max-w-[700px] mt-1">
                 {docInfo.about}
               </p>
-              <p className="text-gray-500 font-medium mt-4">
-                Appointment fee:{" "}
-                <span className="text-gray-600">
-                  {currencySymbol}
-                  {docInfo.fees}
-                </span>
-              </p>
+              <button className="mt-3 bg-primary text-white w-full py-2 rounded-md text-base">
+                Go to Google Maps
+              </button>
             </div>
           </div>
         </div>
+        <form class="flex flex-col justify-center gap-6 md:w-2/4 text-sm text-gray-600 dark:text-white">
+          <label for="place">Place</label>
+          <input type="text" id="place" class="border-b-3" />
 
+          <label for="name">Name</label>
+          <input type="text" id="name" class="border-b-3" />
+
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" class="border-b-3" />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" class="border-b-3" />
+
+          <label for="picture">Upload Picture</label>
+          <input type="file" id="picture" />
+
+          <button className="bg-primary text-white w-full py-2 rounded-md text-base">
+            Submit
+          </button>
+        </form>
+        <RelatedDoctors caseId={caseId} speciality={docInfo.speciality} />
       </div>
     )
   );
 };
 
-export default Appointment;
+export default Donate;

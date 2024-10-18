@@ -3,15 +3,16 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Places from "./pages/Places";
 import Login from "./pages/Login";
-import About from "./pages/About";
+import Report from "./pages/Report";
 import Contact from "./pages/Contact";
 import MyProfile from "./pages/MyProfile";
 import MyAppointments from "./pages/MyAppointments";
 import Appointment from "./pages/Appointment";
-import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Navbar2 from "./components/NavBar2";
+import Navbar2 from "./components/Navbar2";
 import Chatbot from "./components/Chatbot";
+import Cases from "./pages/Cases";
+import Donate from "./pages/Donate";
 const App = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const toggleDarkMode = () => {
@@ -27,7 +28,9 @@ const App = () => {
           <Route path="/places" element={<Places />} />
           <Route path="/places/:speciality" element={<Places />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/cases" element={<Cases/>}/>
+          <Route path="/donate/:caseId" element={<Donate />} />
+          <Route path="/report" element={<Report />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/my-profile" element={<MyProfile />} />
           <Route path="/my-appointments" element={<MyAppointments />} />

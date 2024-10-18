@@ -56,8 +56,12 @@ const Navbar2 = (props) => {
             <li className="py-1 hover:text-gray-300">PLACES</li>
             <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
           </NavLink>
-          <NavLink to="/about">
-            <li className="py-1 hover:text-gray-300">ABOUT</li>
+          <NavLink to="/report">
+            <li className="py-1 hover:text-gray-300">REPORT</li>
+            <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
+          </NavLink>
+          <NavLink to="/cases">
+            <li className="py-1 hover:text-gray-300">CASES</li>
             <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
           </NavLink>
           <NavLink to="/contact">
